@@ -30,7 +30,8 @@ const PopulationBarChartRace = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/population/${year}`);
+                // Use the Netlify function URL
+                const response = await fetch(`https://ubiquitous-cat-da8a2e.netlify.app/.netlify/functions/population?year=${year}`);
                 const result = await response.json();
 
                 const filteredData = result.filter(d => d["Country name"] !== "World" && d["Country name"] !== "Less developed regions");
